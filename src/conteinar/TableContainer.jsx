@@ -1,16 +1,17 @@
 import React from "react";
 import { Table } from "reactstrap";
 
-const TableContainer = () => {
+const TableContainer = ({datalist}) => {
   return (
     <>
     <Table hover>
       <thead>
         <tr>
           <th>#</th>
-          <th>First Name</th>
-          <th>Last Name</th>
-          <th>Username</th>
+          <th>Email</th>
+          <th>Password</th>
+          <th>Address</th>
+          <th>Phone Number</th>
         </tr>
       </thead>
       <tbody>
