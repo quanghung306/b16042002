@@ -32,7 +32,7 @@ const App = () => {
     <div>
       <FormContainer onSubmitData={onSubmitData} />
       {isLoang ? (
-        <Spinner>Loading...</Spinner>
+        <Spinner>Loading..</Spinner>
       ) : (
         <TableContainer datalist={dataList} />
       )}
