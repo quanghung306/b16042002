@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import FormContainer from "./conteinar/FormContainer";
-import TableContainer from "./conteinar/TableContainer";
+import FormContainer from "./container/FormContainer";
+import TableContainer from "./container/TableContainer";
 
 const App = () => {
   const [dataList, setDataList] = useState([
