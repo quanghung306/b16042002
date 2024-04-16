@@ -7,16 +7,15 @@ import { Spinner } from "reactstrap";
 
 const App = () => {
   const [dataList, setDataList] = useState([]);
-  const [isLoang, setIsLoang] = useState(false)
+  const [isLoang, setIsLoang] = useState(false);
   useEffect(() => {
-    if (dataList?.length>0) {
-      localStorage.setItem("dataList",JSON.stringify(dataList));
+    if (dataList?.length > 0) {
+      localStorage.setItem("dataList", JSON.stringify(dataList));
     }
-    
   }, [dataList]);
 
   useEffect(() => {
-    const dataInlocal =localStorage.getItem("dataList");
+    const dataInlocal = localStorage.getItem("dataList");
     if (dataInlocal) {
       setIsLoang(true);
       setTimeout(() => {
@@ -24,20 +23,19 @@ const App = () => {
         setIsLoang(false);
       }, 3000);
     }
-  }, [])
-  
-  const onSubmitData =(data) => {
+  }, []);
+
+  const onSubmitData = (data) => {
     setDataList([...dataList, data]);
   };
   return (
     <div>
-      <FormContainer onSubmitData={onSubmitData}/>
-      {isLoang?(
+      <FormContainer onSubmitData={onSubmitData} />
+      {isLoang ? (
         <Spinner>Loading...</Spinner>
-      ):(
+      ) : (
         <TableContainer datalist={dataList} />
       )}
-      
     </div>
   );
 };
