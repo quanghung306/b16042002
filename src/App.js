@@ -23,8 +23,6 @@ const App = () => {
         setDataList(JSON.parse(dataInlocal));
         setIsLoang(false);
       }, 3000);
-      
-      
     }
   }, [])
   
