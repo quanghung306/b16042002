@@ -1,5 +1,5 @@
 import React from "react";
-import { Table } from "reactstrap";
+import { Button, Table } from "reactstrap";
 
 const TableContainer = ({datalist}) => {
   return (
@@ -12,6 +12,7 @@ const TableContainer = ({datalist}) => {
           <th>Password</th>
           <th>Address</th>
           <th>Phone Number</th>
+          <th>Action</th>
         </tr>
       </thead>
       <tbody>
@@ -23,6 +24,9 @@ const TableContainer = ({datalist}) => {
               <th>{data.password}</th>
               <th>{data.address}</th>
               <th>{data.phoneNumber}</th>
+              <td>
+                <Button>delete</Button>
+              </td>
             </tr>
           ))};
       </tbody>

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import FormField from "../componets/FormField";
-const FormContainer = () => {
+const FormContainer = ({onSubmitData}) => {
   const [emailValue, setEmailValue] = useState("");
   const onEmailValueChange = (e) =>{
     setEmailValue(e.target.value);
@@ -30,11 +30,13 @@ const FormContainer = () => {
        return;
     };
     const oj={
-        emailValue,
-        passwordValue,
-        addressValue,
-    }
-    console.log("🚀 ~ onSubmi ~ oj:", oj)
+        id:Math.random(),
+        email:emailValue,
+        password:passwordValue,
+        address:addressValue,
+        phoneNumber:phoneValue,
+    };
+    onSubmitData(oj);
   };
   return (
     <Form>
