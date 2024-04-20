@@ -21,12 +21,16 @@ const App = () => {
       setTimeout(() => {
         setDataList(JSON.parse(dataInlocal));
         setIsLoang(false);
-      }, 3000);
+      }, 1000);
     }
   }, []);
 
   const onSubmitData = (data) => {
     setDataList([...dataList, data]);
+  };
+  const onDelete = (updatedDataList) => {
+    setDataList(updatedDataList);
+    localStorage.setItem("dataList", JSON.stringify(updatedDataList));
   };
   return (
     <div>
@@ -34,9 +38,11 @@ const App = () => {
       {isLoang ? (
         <Spinner>Loading..</Spinner>
       ) : (
-        <TableContainer datalist={dataList} />
+        <TableContainer datalist={dataList} onDelete={onDelete} />
       )}
     </div>
   );
+  
+  
 };
 export default App;

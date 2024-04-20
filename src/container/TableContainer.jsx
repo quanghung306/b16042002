@@ -1,7 +1,12 @@
 import React from "react";
 import { Button, Table } from "reactstrap";
 
-const TableContainer = ({ datalist }) => {
+const TableContainer = ({ datalist,onDelete }) => {
+  const handleDelete = (id) => {
+    const updatedDataList = datalist.filter(data => data.id !== id);
+    localStorage.setItem("dataList", JSON.stringify(updatedDataList));
+    onDelete(updatedDataList); 
+  };
   return (
     <>
       <Table hover>
@@ -16,6 +21,7 @@ const TableContainer = ({ datalist }) => {
           </tr>
         </thead>
         <tbody>
+          
           {datalist.map((data, index) => (
             <tr key={data.id}>
               <th scope="row">{index + 1}</th>
@@ -23,8 +29,8 @@ const TableContainer = ({ datalist }) => {
               <th>{data.password}</th>
               <th>{data.address}</th>
               <th>{data.phoneNumber}</th>
-              <td>
-                <Button>delete</Button>
+              <td >
+                <Button onClick={() => handleDelete(data.id)}>delete</Button>
               </td>
             </tr>
           ))}
