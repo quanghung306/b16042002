@@ -6,7 +6,7 @@ const TableContainer = ({ datalist,onDeleteData }) => {
     const isConfirmed = window.confirm("Are you sure you want to delete this item?");
     if (isConfirmed) {
       const updatedDataList = datalist.filter(data => data.id !== id);
-      localStorage.setItem("dataList", JSON.stringify(updatedDataList));
+      localStorage.removeItem("dataList", JSON.stringify(updatedDataList));
       onDeleteData(updatedDataList); 
       alert("Item deleted successfully."); 
     }

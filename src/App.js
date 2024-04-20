@@ -30,7 +30,6 @@ const App = () => {
   };
   const onDeleteData = (updatedDataList) => {
     setDataList(updatedDataList);
-    localStorage.setItem("dataList", JSON.stringify(updatedDataList));
   };
   return (
     <div>
