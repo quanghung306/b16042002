@@ -28,7 +28,7 @@ const App = () => {
   const onSubmitData = (data) => {
     setDataList([...dataList, data]);
   };
-  const onDelete = (updatedDataList) => {
+  const onDeleteData = (updatedDataList) => {
     setDataList(updatedDataList);
     localStorage.setItem("dataList", JSON.stringify(updatedDataList));
   };
@@ -38,7 +38,7 @@ const App = () => {
       {isLoang ? (
         <Spinner>Loading..</Spinner>
       ) : (
-        <TableContainer datalist={dataList} onDelete={onDelete} />
+        <TableContainer datalist={dataList} onDeleteData={onDeleteData} />
       )}
     </div>
   );

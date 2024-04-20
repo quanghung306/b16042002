@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
+import { Alert, Button, Col, Form, FormGroup, Input, Label, Row } from "reactstrap";
 import FormField from "../componets/FormField";
 const FormContainer = ({ onSubmitData }) => {
   const [emailValue, setEmailValue] = useState("");
@@ -22,12 +22,19 @@ const FormContainer = ({ onSubmitData }) => {
     setPhoneValue(e.target.value);
     console.log("", e.target.value);
   };
+  const [useEmail, setUseEmail] = useState([]);
   const onSubmit = (e) => {
     e.preventDefault();
     if (isNaN(phoneValue)) {
-      alert();
+      alert("rrrr");
       return;
     }
+    if (useEmail.includes(emailValue) ) {
+      alert("email da ton tai");
+      return;
+    }
+    setUseEmail([...useEmail, emailValue]);
+    
     const oj = {
       id: Math.random(),
       email: emailValue,
@@ -35,8 +42,10 @@ const FormContainer = ({ onSubmitData }) => {
       address: addressValue,
       phoneNumber: phoneValue,
     };
+    
     onSubmitData(oj);
   };
+  
   return (
     <Form>
       <Row>

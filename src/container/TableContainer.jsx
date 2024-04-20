@@ -1,11 +1,15 @@
 import React from "react";
 import { Button, Table } from "reactstrap";
 
-const TableContainer = ({ datalist,onDelete }) => {
-  const handleDelete = (id) => {
-    const updatedDataList = datalist.filter(data => data.id !== id);
-    localStorage.setItem("dataList", JSON.stringify(updatedDataList));
-    onDelete(updatedDataList); 
+const TableContainer = ({ datalist,onDeleteData }) => {
+  const onDelete = (id) => {
+    const isConfirmed = window.confirm("Are you sure you want to delete this item?");
+    if (isConfirmed) {
+      const updatedDataList = datalist.filter(data => data.id !== id);
+      localStorage.setItem("dataList", JSON.stringify(updatedDataList));
+      onDeleteData(updatedDataList); 
+      alert("Item deleted successfully."); 
+    }
   };
   return (
     <>
@@ -30,7 +34,9 @@ const TableContainer = ({ datalist,onDelete }) => {
               <th>{data.address}</th>
               <th>{data.phoneNumber}</th>
               <td >
-                <Button onClick={() => handleDelete(data.id)}>delete</Button>
+                <Button onClick={() => onDelete(data.id)}>delete</Button>
+                <Button >Edit</Button>
+                
               </td>
             </tr>
           ))}
